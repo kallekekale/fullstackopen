@@ -1,53 +1,4 @@
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.course}</h1>
-    </>
-  );
-};
-
-const Part = (props) => {
-  return (
-    <>
-      <p>
-        {props.part} {props.exercises}
-      </p>
-    </>
-  );
-};
-
-const Content = (props) => {
-  return (
-    <div>
-      {props.parts.map((part) => (
-        <Part key={part.id} part={part.name} exercises={part.exercises} />
-      ))}
-    </div>
-  );
-};
-
-const Total = (props) => {
-  const total = props.parts.reduce((sum, part) => sum + part.exercises, 0);
-  return (
-    <div>
-      <p>Number of exercises {total}</p>
-    </div>
-  );
-};
-
-const Courses = (props) => {
-  return (
-    <div>
-      {props.courses.map((course) => (
-        <div key={course.id}>
-          <Header course={course.name} />
-          <Content parts={course.parts} />
-          <Total parts={course.parts} />
-        </div>
-      ))}
-    </div>
-  );
-};
+import Course from "./components/Course.jsx";
 
 const App = () => {
   const courses = [
@@ -95,7 +46,7 @@ const App = () => {
     },
   ];
 
-  return <Courses courses={courses} />;
+  return <Course courses={courses} />;
 };
 
 export default App;
